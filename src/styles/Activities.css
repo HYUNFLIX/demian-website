@@ -1,0 +1,223 @@
+/* Activities.css */
+.activities-section {
+  padding: 6rem 0;
+  background-color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.activities-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  color: #1E3A8A;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #1E3A8A 0%, #93C5FD 100%);
+}
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filter-button {
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem 1rem;
+  background: none;
+  border: 2px solid #e9ecef;
+  border-radius: 30px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button.active {
+  background: linear-gradient(135deg, #1E3A8A 0%, #93C5FD 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(30, 58, 138, 0.2);
+}
+
+.filter-button:hover:not(.active) {
+  border-color: #93C5FD;
+  color: #1E3A8A;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.activity-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+.activity-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.activity-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.activity-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.activity-card:hover .activity-image img {
+  transform: scale(1.1);
+}
+
+.activity-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #1E3A8A 0%, #93C5FD 100%);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.activity-content {
+  padding: 1.5rem;
+}
+
+.activity-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1E3A8A;
+}
+
+.activity-date {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.activity-description {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #495057;
+}
+
+.activities-quote {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.activities-quote blockquote {
+  font-family: 'Gowun Batang', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #1E3A8A;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 3rem;
+}
+
+.activities-quote blockquote::before,
+.activities-quote blockquote::after {
+  content: '"';
+  font-family: 'Georgia', serif;
+  font-size: 4rem;
+  position: absolute;
+  color: rgba(147, 197, 253, 0.3);
+  line-height: 1;
+}
+
+.activities-quote blockquote::before {
+  top: -0.5rem;
+  left: 0;
+}
+
+.activities-quote blockquote::after {
+  bottom: -2rem;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1023px) {
+  .activities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .filter-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    margin: 0 0.3rem 0.8rem;
+  }
+  
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .activities-quote blockquote {
+    font-size: 1.2rem;
+    padding: 0 2rem;
+  }
+}

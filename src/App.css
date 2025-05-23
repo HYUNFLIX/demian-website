@@ -1,0 +1,151 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap');
+
+:root {
+  --color-primary: #1E3A8A;
+  --color-primary-light: #93C5FD;
+  --color-bg-light: #f8f9fa;
+  --color-bg-medium: #e9ecef;
+  --color-text-dark: #343a40;
+  --color-text-medium: #495057;
+  --color-text-light: #6c757d;
+  --color-border: #ced4da;
+  --font-heading: 'Noto Serif KR', serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+  --font-accent: 'Gowun Batang', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* 헤더 높이만큼 패딩 */
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.loading-content {
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+.loading-content h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+}
+
+.loading-progress {
+  height: 100%;
+  width: 0;
+  background-color: #fff;
+  animation: progress 2s ease-in-out forwards;
+}
+
+.loading-content p {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.music-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-text-medium);
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 767px) {
+  .loading-content h1 {
+    font-size: 2rem;
+  }
+  
+  .loading-bar {
+    width: 250px;
+  }
+  
+  .loading-content p {
+    font-size: 1rem;
+  }
+}
